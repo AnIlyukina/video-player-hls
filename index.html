@@ -16,6 +16,15 @@
       />
       <h1>Player</h1>
     </div>
+
+    <p class="header__info">
+      Сделано с помощью библиотеки hls.js:
+      <a
+        class="header__link"
+        href="https://github.com/video-dev/hls.js">
+        ссылка на доку :)
+      </a>
+    </p>
   </header>
   <main>
     <div class="wrapper">
@@ -27,8 +36,25 @@
               type="text"
           />
         </label>
+
+        <label>
+          Ширина проигрывателя:
+          <select
+            id="videoSize"
+            class="options__select"
+          >
+            <option value="240px">240px</option>
+            <option value="640px">640px</option>
+            <option value="720px">720px</option>
+            <option value="1280px">1280px</option>
+            <option value="1920px">1920px</option>
+            <option value="80%">80%</option>
+            <option value="100%">100%</option>
+          </select>
+        </label>
       </div>
     </div>
+
     <div
       class="player"
       style="width: 720px;"
@@ -39,9 +65,31 @@
         class="player__video"
       ></video>
     </div>
+
+    <div class="wrapper">
+      <div class="info">
+        <div class="info__item info__item_type_status">
+          <span>Немного о статусах:</span>
+          <p 
+            id="playerStatus"
+            class="info__item-text"></p>
+        </div>
+        <div class="info__item info__item_type_error">
+          <span>Немного об ошибках:</span>
+          <p
+            id="playerErrors"
+            class="info__item-text"></p>
+        </div>
+        <div class="info__item info__item_type_counter">
+          <span>Данные о потоке:</span>
+          <p
+            id="streamData"
+            class="info__item-text">Данные не получены</p>
+        </div>
+      </div>
+    </div>
   </main>
-  </main>
-  <footer class="footer">Подвальчик</footer>
+  <footer class="footer">Подвальчикк</footer>
   <script type="text/javascript" src="./dist/main.js"></script>
 </body>
 </html>
