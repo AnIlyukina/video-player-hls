@@ -32,11 +32,11 @@ const usePlayer = () => {
   function toggleVideoStatus() {
     if (video.paused) {
       video.play();
-      playOrPause.src = "./assets/icons/pause.png";
+      playOrPause.src = "dist/assets/icons/pause.png";
       return;
     }
     video.pause();
-    playOrPause.src = "./assets/icons/play.png";
+    playOrPause.src = "dist/assets/icons/play.png";
   }
 
   function changeCurrentTime(event) {
@@ -65,10 +65,10 @@ const usePlayer = () => {
   function toogleFullScreen() {
     if (document.fullscreenElement) {
       document.exitFullscreen();
-      fullScreenBtn.src = "./assets/icons/fullscreen-icon.png";
+      fullScreenBtn.src = "dist/assets/icons/fullscreen-icon.png";
     } else {
       player.requestFullscreen();
-      fullScreenBtn.src = "./assets/icons/screen-icon.png";
+      fullScreenBtn.src = "dist/assets/icons/screen-icon.png";
     }
   }
 
