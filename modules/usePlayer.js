@@ -1,7 +1,6 @@
 import { getTime } from "./useTimeFormatting";
 
 const usePlayer = () => {
-  
   const player = document.querySelector(".player");
   const video = player.querySelector(".player__video");
   const playButton = player.querySelector(".player__play");
@@ -21,7 +20,6 @@ const usePlayer = () => {
   const videoWidth = player.style.width;
   const videoSizeOptions = document.querySelectorAll("#videoSize option");
   const videoSize = document.querySelector("#videoSize");
-
 
   if (videoWidth) {
     videoSizeOptions.forEach((option, index) => {
@@ -48,7 +46,8 @@ const usePlayer = () => {
   }
 
   function updateProgressPlayed() {
-    progressPlayed.style.width = (video.currentTime / video.duration) * 100 + '%';
+    progressPlayed.style.width =
+      (video.currentTime / video.duration) * 100 + "%";
   }
 
   function updateProgressBuffered(buffered) {
@@ -83,7 +82,6 @@ const usePlayer = () => {
 
   fullscreen.addEventListener("click", toogleFullScreen);
 
-
   playerConsole.addEventListener("mousemove", () => {
     progressPlayedBtn.style.opacity = "100%";
   });
@@ -94,7 +92,6 @@ const usePlayer = () => {
   progress.addEventListener("click", (event) => {
     changeCurrentTime(event);
   });
-
 
   return {
     updateTime,

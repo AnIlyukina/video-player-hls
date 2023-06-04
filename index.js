@@ -6,8 +6,13 @@ import { getBuffer, timeRangesToString } from "./modules/useTimeFormatting";
 
 import usePlayer from "./modules/usePlayer";
 
-const {updateTime, changeSize, updateProgressPlayed, updateProgressBuffered, video } =
-  usePlayer();
+const {
+  updateTime,
+  changeSize,
+  updateProgressPlayed,
+  updateProgressBuffered,
+  video,
+} = usePlayer();
 
 // инпут для манифеста
 const stream = document.querySelector("#stream");
@@ -23,7 +28,6 @@ const defaultVideoSrc =
   "https://devstreaming-cdn.apple.com/videos/streaming/examples/img_bipbop_adv_example_ts/master.m3u8";
 let videoSrc = "";
 
-
 if (defaultVideoSrc) {
   videoSrc = defaultVideoSrc;
   stream.value = videoSrc;
@@ -37,7 +41,6 @@ function clearStreamInfo() {
 }
 
 function loadStream() {
-  
   clearStreamInfo();
 
   // isSupported() - метод, который проверяет поддерживает ли браузер расширение MediaSource
@@ -57,7 +60,7 @@ function loadStream() {
   hls = new Hls();
 
   hls.on(Hls.Events.MEDIA_ATTACHED, function () {
-    addStatus("— MediaSource готов, видео и hls.js связаны друг с другом.")
+    addStatus("— MediaSource готов, видео и hls.js связаны друг с другом.");
   });
 
   hls.on(Hls.Events.MANIFEST_PARSED, function (event, data) {
@@ -69,7 +72,6 @@ function loadStream() {
     // устанавливает setInterval для получения данных о потоке
     hls.bufferTimer = setInterval(getStreamData, 100);
   });
-
 
   // загружаем манифест, ресурс
   hls.loadSource(videoSrc);
@@ -97,7 +99,7 @@ function handleHLSErrors() {
         addErrors("— Сбой загрузки манифеста(потока) из-за тйам-аута");
         break;
       case Hls.ErrorDetails.MANIFEST_INCOMPATIBLE_CODECS_ERROR:
-        addErrors("— Несовместимость видео кодеки с MediaSource")
+        addErrors("— Несовместимость видео кодеки с MediaSource");
         break;
       case Hls.ErrorDetails.FRAG_DECRYPT_ERROR:
         addErrors("— Сбой расшифровки фрагмента");
@@ -125,8 +127,7 @@ function handleHLSErrors() {
   });
 }
 
-function getStreamData () {
-
+function getStreamData() {
   const playedBlocks = timeRangesToString(video.played);
   const bufferedBlocks = timeRangesToString(video.buffered);
   const buffer = getBuffer(video.currentTime, video.buffered);
@@ -156,13 +157,13 @@ function changeStream(value) {
   loadStream();
 }
 
-// слушатели 
+// слушатели
 // на изменение потока
-stream.addEventListener('change', (event) => {
-  changeStream(event.target.value)
-})
+stream.addEventListener("change", (event) => {
+  changeStream(event.target.value);
+});
 
 // на изменение ширины проигрывателя
-videoSize.addEventListener('change', (event) => {
+videoSize.addEventListener("change", (event) => {
   changeSize(event.target.value);
-})
+});

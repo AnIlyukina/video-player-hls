@@ -1,36 +1,36 @@
-body{
+body {
   margin: 0;
   padding: 0;
   background-color: #464646;
   color: white;
 }
 
-.header{
+.header {
   padding: 20px;
 
-  &__title{
+  &__title {
     display: flex;
     align-items: center;
     justify-content: center;
   }
 
-  &__icon{
+  &__icon {
     width: 50px;
     height: 50px;
     margin-right: 15px;
   }
 
-  .title{
+  .title {
     margin: 0;
   }
 }
 
-.wrapper{
+.wrapper {
   padding: 20px;
   margin: auto;
 }
 
-.options{
+.options {
   padding: 5px;
   display: flex;
   flex-direction: column;
@@ -38,7 +38,7 @@ body{
   border-radius: 5px;
   background-color: #c384ff;
 
-  &__input{
+  &__input {
     width: 100%;
     margin-bottom: 5px;
     background: transparent;
@@ -47,7 +47,7 @@ body{
     padding: 5px;
     box-sizing: border-box;
   }
-  
+
   &__select {
     background: transparent;
     border: none;
@@ -59,18 +59,18 @@ body{
 .player {
   position: relative;
   margin: 20px auto 0;
-  
-  &__video{
+
+  &__video {
     width: 100%;
     height: 100%;
   }
-  
-  &__video:hover + .player__console{
+
+  &__video:hover + .player__console {
     visibility: visible;
-    opacity:100%
+    opacity: 100%;
   }
 
-  &__console{
+  &__console {
     position: absolute;
     bottom: 5px;
     margin: auto;
@@ -82,9 +82,9 @@ body{
     opacity: 0;
     transition: visibility 0s, opacity 0.5s linear;
 
-    &:hover{
+    &:hover {
       visibility: visible;
-      opacity:100%
+      opacity: 100%;
     }
   }
 
@@ -94,7 +94,7 @@ body{
     padding: 0 20px;
   }
 
-  &__play{
+  &__play {
     cursor: pointer;
     width: 18px;
     height: 18px;
@@ -106,40 +106,39 @@ body{
   .fullscreen-btn {
     width: 28px;
   }
-  
-  &__time{
+
+  &__time {
     margin-left: 20px;
     line-height: 18px;
   }
 
-  &__fullscreen{
+  &__fullscreen {
     cursor: pointer;
     width: 28px;
     height: 28px;
     margin-left: auto;
   }
 
-
-  .progress{
+  .progress {
     position: relative;
     bottom: 0;
     width: 100%;
     height: 4px;
     margin-bottom: 10px;
-    border-radius:3px;
+    border-radius: 3px;
     background-color: rgba(164, 162, 162, 0.41);
     cursor: pointer;
 
-    &__played{
+    &__played {
       position: relative;
       height: 100%;
       z-index: 2;
       // transition: width .2s linear;
       background-color: rgba(255, 81, 81, 0.6);
-      width:  0%;
+      width: 0%;
     }
 
-    &__played-btn{
+    &__played-btn {
       position: absolute;
       right: -5px;
       bottom: -3px;
@@ -148,19 +147,18 @@ body{
       border-radius: 50%;
       background-color: rgba(255, 81, 81);
       opacity: 0;
-      transition: opacity .1s linear;
+      transition: opacity 0.1s linear;
     }
-    
+
     &__buffered {
       height: 100%;
       position: absolute;
       z-index: 1;
       transition: width 0.2s linear;
       background-color: rgb(234, 211, 211);
-      width:0%;
+      width: 0%;
     }
   }
-
 }
 
 .info {
@@ -178,23 +176,23 @@ body{
     background-color: white;
   }
 
-  &__item-text{
+  &__item-text {
     margin: 10px 0;
     white-space: break-spaces;
     line-height: 25px;
   }
 
-  &__item{
-    border-radius:10px;
+  &__item {
+    border-radius: 10px;
     margin: 0 0 20px;
     padding: 3px;
     color: black;
   }
 }
 
-.footer{
+.footer {
   padding: 0 20px 20px;
-  box-sizing:border-box;
+  box-sizing: border-box;
 
   &__info {
     text-align: end;

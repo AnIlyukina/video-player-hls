@@ -25,7 +25,7 @@ export function getBuffer(currentTime, buffered) {
 }
 
 // из доки взяла
-export function timeRangesToString (r) {
+export function timeRangesToString(r) {
   let log = "";
   for (let i = 0; i < r.length; i++) {
     log += "[" + r.start(i) + ", " + r.end(i) + "]";
