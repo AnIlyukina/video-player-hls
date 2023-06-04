@@ -1,3 +1,4 @@
+
 body {
   margin: 0;
   padding: 0;
@@ -9,9 +10,15 @@ body {
   padding: 20px;
 
   &__title {
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
-    align-items: center;
-    justify-content: center;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
   }
 
   &__icon {
@@ -32,8 +39,13 @@ body {
 
 .options {
   padding: 5px;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  flex-direction: column;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
   border: 1px solid #c384ff;
   border-radius: 5px;
   background-color: #c384ff;
@@ -45,7 +57,8 @@ body {
     border: none;
     border-bottom: 1px solid white;
     padding: 5px;
-    box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+            box-sizing: border-box;
   }
 
   &__select {
@@ -76,10 +89,13 @@ body {
     margin: auto;
     width: 100%;
     padding: 10px 10px 5px 10px;
-    box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+            box-sizing: border-box;
     background-color: rgba(78, 88, 140, 0.5);
     visibility: hidden;
     opacity: 0;
+    -webkit-transition: visibility 0s, opacity 0.5s linear;
+    -o-transition: visibility 0s, opacity 0.5s linear;
     transition: visibility 0s, opacity 0.5s linear;
 
     &:hover {
@@ -89,8 +105,12 @@ body {
   }
 
   &__controls {
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
-    align-items: center;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
     padding: 0 20px;
   }
 
@@ -133,7 +153,9 @@ body {
       position: relative;
       height: 100%;
       z-index: 2;
-      // transition: width .2s linear;
+      -webkit-transition: width .2s linear;
+      -o-transition: width .2s linear;
+      transition: width .2s linear;
       background-color: rgba(255, 81, 81, 0.6);
       width: 0%;
     }
@@ -147,6 +169,8 @@ body {
       border-radius: 50%;
       background-color: rgba(255, 81, 81);
       opacity: 0;
+      -webkit-transition: opacity 0.1s linear;
+      -o-transition: opacity 0.1s linear;
       transition: opacity 0.1s linear;
     }
 
@@ -154,6 +178,8 @@ body {
       height: 100%;
       position: absolute;
       z-index: 1;
+      -webkit-transition: width 0.2s linear;
+      -o-transition: width 0.2s linear;
       transition: width 0.2s linear;
       background-color: rgb(234, 211, 211);
       width: 0%;
@@ -192,7 +218,8 @@ body {
 
 .footer {
   padding: 0 20px 20px;
-  box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
 
   &__info {
     text-align: end;

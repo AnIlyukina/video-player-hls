@@ -1,5 +1,7 @@
 const path = require('path')
 const HtmlWebpackPlugin = require("html-webpack-plugin");
+const { CleanWebpackPlugin } = require("clean-webpack-plugin");
+const CopyWebpackPlugin = require("copy-webpack-plugin");
 
 module.exports = {
   mode: "development",
@@ -7,30 +9,36 @@ module.exports = {
     static: {
       directory: path.join(__dirname),
     },
-    compress: true
+    compress: true,
   },
   entry: "./index.js",
   output: {
+    filename: "[name].[hash].js",
     path: path.join(__dirname, "dist"),
-    publicPath: "/dist/",
-    filename: "main.js",
   },
   module: {
     rules: [
       {
         test: /\.(scss|css)$/,
-        use: ["style-loader","css-loader", "sass-loader"],
+        use: ["style-loader", "css-loader", "sass-loader"],
       },
       {
         test: /\.(jpe?g|png|gif|svg)$/i,
         loader: "file-loader",
-        options: {
-          name: "/public/icons/[name].[ext]",
-        },
       },
     ],
   },
   plugins: [
-    new HtmlWebpackPlugin({ template: './index.html' }),
+    new CleanWebpackPlugin(),
+    new HtmlWebpackPlugin({ template: "./index.html" }),
+    new CopyWebpackPlugin({
+      patterns: [
+        {
+          from: path.resolve(__dirname, "assets"),
+          // /Applications/MAMP/htdocs/test
+          to: path.resolve(__dirname, "dist/assets"),
+        },
+      ],
+    }),
   ],
 };
