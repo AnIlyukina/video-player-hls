@@ -13,8 +13,9 @@ module.exports = {
   },
   entry: "./index.js",
   output: {
-    filename: "[name].[hash].js",
     path: path.join(__dirname, "dist"),
+    publicPath: "/dist/",
+    filename: "main.js",
   },
   module: {
     rules: [
