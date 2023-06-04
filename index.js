@@ -2,19 +2,15 @@ import "./assets/style.scss";
 
 import Hls from "hls.js";
 
-import { getBuffer, getTime, timeRangesToString } from "./useTimeFormatting";
+import { getBuffer, timeRangesToString } from "./modules/useTimeFormatting";
 
-// видеоплеер
-const player = document.querySelector(".player");
-const video = document.querySelector(".player__video");
+import usePlayer from "./modules/usePlayer";
+
+const {updateTime, changeSize, updateProgressPlayed, updateProgressBuffered, video } =
+  usePlayer();
 
 // инпут для манифеста
 const stream = document.querySelector("#stream");
-
-// элементы для выбора ширины плеера
-const videoWidth = player.style.width;
-const videoSizeOptions = document.querySelectorAll("#videoSize option");
-const videoSize = document.querySelector("#videoSize");
 
 // статусы, ошибки, данные о потоке
 const playerStatus = document.querySelector("#playerStatus");
@@ -32,14 +28,6 @@ if (defaultVideoSrc) {
   videoSrc = defaultVideoSrc;
   stream.value = videoSrc;
   loadStream();
-}
-
-if (videoWidth) {
-  videoSizeOptions.forEach((option, index) => {
-    if (option.value === videoWidth) {
-      videoSize.selectedIndex = index;
-    }
-  });
 }
 
 function clearStreamInfo() {
@@ -92,7 +80,7 @@ function loadStream() {
   // обрабатываем ошибки(не все, выбрала часть из доки)
   handleHLSErrors();
 
-  hls.on(Hls.Events.DESTROYING, function () {
+  hls.on(Hls.Events.DESTROYING, () => {
     clearInterval(hls.bufferTimer);
   });
 }
@@ -142,14 +130,17 @@ function getStreamData () {
   const playedBlocks = timeRangesToString(video.played);
   const bufferedBlocks = timeRangesToString(video.buffered);
   const buffer = getBuffer(video.currentTime, video.buffered);
-  const currentTime = getTime(video.currentTime);
 
   streamData.textContent = `Продолжительность потока (сек): ${video.duration}.
-Текущее время: ${currentTime}.
 Запас буфера (сек): ${buffer}.
 Бло­ки муль­ти­ме­дий­ных дан­ных:
 - которые были проигранны, сек (played): ${playedBlocks ? playedBlocks : 0}
 - загруженные в буфер, сек (buffered): ${bufferedBlocks}`;
+
+  updateTime();
+  
+  updateProgressPlayed();
+  updateProgressBuffered(buffer);
 }
 
 function addStatus(text) {
@@ -163,10 +154,6 @@ function addErrors(text) {
 function changeStream(value) {
   videoSrc = value;
   loadStream();
-}
-
-function changeSize(value) {
-  player.style.width = value;
 }
 
 // слушатели 

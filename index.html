@@ -14,17 +14,8 @@
         src="./assets/icons/player-icon.png"
         alt="icon-player"
       />
-      <h1>Player</h1>
+      <h1 class="title">Player</h1>
     </div>
-
-    <p class="header__info">
-      Сделано с помощью библиотеки hls.js:
-      <a
-        class="header__link"
-        href="https://github.com/video-dev/hls.js">
-        ссылка на доку :)
-      </a>
-    </p>
   </header>
   <main>
     <div class="wrapper">
@@ -61,9 +52,35 @@
     >
       <video
         id="player"
-        controls
         class="player__video"
       ></video>
+      <div class="player__console">
+        <div class="progress">
+          <div class="progress__buffered"></div>
+
+          <div class="progress__played">
+            <div class="progress__played-btn"></div>
+          </div>
+        </div>
+
+        <div class='player__controls'>
+          <div class="player__play">
+            <img
+              class="play-pause-btn"
+              src="/assets/icons/play.png"
+              alt="play-or-pause-button"
+            />
+          </div>
+          <div class="player__time">00:00:00 / 00:00:00</div>
+          <div class="player__fullscreen">
+            <img
+              class="fullscreen-btn"
+              src="/assets/icons/fullscreen-icon.png"
+              alt="fullscreen-button"
+            />
+          </div>
+        </div>
+      </div>
     </div>
 
     <div class="wrapper">
@@ -89,7 +106,16 @@
       </div>
     </div>
   </main>
-  <footer class="footer">Подвальчикк</footer>
+  <footer class="footer">
+    <p class="footer__info">
+      Сделано с помощью библиотеки hls.js:
+      <a
+        class="footer__link"
+        href="https://github.com/video-dev/hls.js">
+        ссылка на доку :)
+      </a>
+    </p>
+  </footer>
   <script type="text/javascript" src="./dist/main.js"></script>
 </body>
 </html>
