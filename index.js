@@ -11,6 +11,7 @@ const {
   changeSize,
   updateProgressPlayed,
   updateProgressBuffered,
+  setDisplayPlayer,
   video,
 } = usePlayer();
 
@@ -21,6 +22,8 @@ const stream = document.querySelector("#stream");
 const playerStatus = document.querySelector("#playerStatus");
 const playerErrors = document.querySelector("#playerErrors");
 const streamData = document.querySelector("#streamData");
+
+const loading = document.querySelector('.loading')
 
 // hls, дефолтное src видео
 let hls;
@@ -42,6 +45,7 @@ function clearStreamInfo() {
 
 function loadStream() {
   clearStreamInfo();
+  toggleLoading(true)
 
   // isSupported() - метод, который проверяет поддерживает ли браузер расширение MediaSource
   if (!Hls.isSupported()) {
@@ -64,6 +68,7 @@ function loadStream() {
   });
 
   hls.on(Hls.Events.MANIFEST_PARSED, function (event, data) {
+    toggleLoading(false)
     addStatus(
       `— Манифест (поток) успешно загружен, ${data.levels.length} quality levels`
     );
@@ -139,9 +144,14 @@ function getStreamData() {
 - загруженные в буфер, сек (buffered): ${bufferedBlocks}`;
 
   updateTime();
-  
+
   updateProgressPlayed();
   updateProgressBuffered(buffer);
+}
+
+function toggleLoading (value) {
+  loading.style.display = value ? 'block' : 'none';
+  setDisplayPlayer(value);
 }
 
 function addStatus(text) {

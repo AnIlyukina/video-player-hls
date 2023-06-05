@@ -72,6 +72,15 @@ const usePlayer = () => {
     }
   }
 
+  function setDisplayPlayer (value) {
+    if (!value) {
+      player.style.display = 'block'
+      return
+    }
+    player.style.display = 'none'
+
+  }
+
   function changeSize(value) {
     player.style.width = value;
   }
@@ -98,6 +107,7 @@ const usePlayer = () => {
     changeSize,
     updateProgressPlayed,
     updateProgressBuffered,
+    setDisplayPlayer,
     video,
   };
 };
