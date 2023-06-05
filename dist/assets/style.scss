@@ -69,9 +69,14 @@ body {
   }
 }
 
+.loading{
+  text-align: center;
+}
+
 .player {
   position: relative;
   margin: 20px auto 0;
+  display: none;
 
   &__video {
     width: 100%;
